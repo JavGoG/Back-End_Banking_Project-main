@@ -1,8 +1,10 @@
 package com.javier.cc.bank.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jakarta.persistence.*;
+import org.springframework.data.relational.core.mapping.Table;
 
-import javax.persistence.*;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

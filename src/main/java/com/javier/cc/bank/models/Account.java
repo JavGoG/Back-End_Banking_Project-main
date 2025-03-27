@@ -1,9 +1,12 @@
 package com.javier.cc.bank.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jakarta.persistence.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.relational.core.mapping.Table;
 
-import javax.persistence.*;
+
+
 @Entity
 @Table(name = "accounts")
 public class Account{
@@ -36,6 +39,9 @@ public class Account{
     }
 
     public Account(){}
+    public Account(TypeAccount type){
+
+    }
 
     public Customer getCustomer() {
         return customer;

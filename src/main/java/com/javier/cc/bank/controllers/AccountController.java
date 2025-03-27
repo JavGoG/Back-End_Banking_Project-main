@@ -20,6 +20,7 @@ public class AccountController {
     @Autowired
     CustomerRepository customerRepository;
 
+
     @GetMapping(value = "/account/{id}")
     public ResponseEntity<Account> getAccount(@PathVariable Long id){
         return new ResponseEntity(accountRepository.findById(id), HttpStatus.OK);
@@ -69,7 +70,7 @@ public class AccountController {
     @GetMapping(value = "/accounts/{type}")
     public ResponseEntity<List<Account>> getAccountsByType(@RequestParam(value = "typeAccount", required = false) Account.TypeAccount typeAccount){
         if (typeAccount != null) {
-            return new ResponseEntity(accountRepository.findAllBytypeAccount(typeAccount), HttpStatus.OK);
+            return new ResponseEntity(accountRepository.findAllByTypeAccount(typeAccount), HttpStatus.OK);
         } return new ResponseEntity<>(accountRepository.findAll(),HttpStatus.OK);
     }
 

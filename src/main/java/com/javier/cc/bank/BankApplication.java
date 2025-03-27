@@ -6,7 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Profile;
 
 @Profile("!test") //Run every time EXCEPT Tests
-@SpringBootApplication
+@SpringBootApplication()
 @ComponentScan
 public class BankApplication {
 
