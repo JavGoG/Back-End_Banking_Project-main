@@ -5,7 +5,7 @@ services:
      image: banking-java-app:1.0.0
      build: .
      ports:
-         - 8080:8080
+         - 8081:8081
      environment:
        -DATABASE_URL: jdbc:postgresql://postgres:5432/banking
        -DATABASE_USERNAME: postgres
@@ -20,7 +20,7 @@ services:
       POSTGRES_DB: banking
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
-      PGDATA: /data/postgres
+      GDATA: /data/postgres
     ports:
       - "5432:5432"
     restart: unless-stopped

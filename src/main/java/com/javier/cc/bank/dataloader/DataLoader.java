@@ -1,4 +1,4 @@
-package com.javier.cc.bank.components;
+package com.javier.cc.bank.dataloader;
 
 import com.javier.cc.bank.models.Account;
 import com.javier.cc.bank.models.Customer;
