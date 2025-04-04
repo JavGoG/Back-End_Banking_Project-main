@@ -15,8 +15,10 @@ public class Account{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
+
     @Column(name = "number")
     private long number;
+
     @Embeddable
     public enum TypeAccount{
         SAVINGS, MARKET, BROKERAGE;
@@ -27,6 +29,7 @@ public class Account{
     @Column(name = "type")
     @Enumerated(value = EnumType.STRING)
     private TypeAccount typeAccount;
+
     @ManyToOne
     @JsonIgnoreProperties({"accounts"})
     @JoinColumn(name = "customer_id", nullable = false )
@@ -35,6 +38,7 @@ public class Account{
     public Account(long number, TypeAccount type, com.javier.cc.bank.models.Customer customer) {
         this.number = number;
         TypeAccount typeAccount = type;
+
         this.customer = customer;
     }
 
