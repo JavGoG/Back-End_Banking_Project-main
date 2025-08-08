@@ -12,10 +12,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class DataLoader implements ApplicationRunner {
 
+    private AccountRepository accountRepository;
+    private CustomerRepository customerRepository;
     @Autowired
-    AccountRepository accountRepository;
-    @Autowired
-    CustomerRepository customerRepository;
+    public DataLoader(AccountRepository accountRepository, CustomerRepository customerRepository){
+        this.accountRepository = accountRepository;
+        this.customerRepository = customerRepository;
+    }
 
     public DataLoader(){}
     @Override
@@ -72,10 +75,6 @@ public class DataLoader implements ApplicationRunner {
         accountRepository.save(accountB4);
         Account accountB5 = new Account(3238, Account.TypeAccount.BROKERAGE, customer5);
         accountRepository.save(accountB5);
-
-
-
-
 
 
     }

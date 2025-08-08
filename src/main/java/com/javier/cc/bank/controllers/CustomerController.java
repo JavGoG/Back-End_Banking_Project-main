@@ -13,10 +13,15 @@ import java.util.List;
 
 @RestController
 public class CustomerController {
+
+    private CustomerRepository customerRepository;
+    private AccountRepository accountRepository;
+
     @Autowired
-    CustomerRepository customerRepository;
-    @Autowired
-    AccountRepository accountRepository;
+    public CustomerController(CustomerRepository customerRepository, AccountRepository accountRepository){
+        this.customerRepository = customerRepository;
+        this.accountRepository = accountRepository;
+    }
 
     @GetMapping("/customers")
     public ResponseEntity<List<Customer>> getAllCustomers(){

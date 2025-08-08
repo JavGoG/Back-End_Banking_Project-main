@@ -4,6 +4,7 @@ import com.javier.cc.bank.models.Account;
 import com.javier.cc.bank.models.Customer;
 import com.javier.cc.bank.repositories.AccountRepository;
 import com.javier.cc.bank.repositories.CustomerRepository;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,13 +14,16 @@ import java.util.Collections;
 import java.util.List;
 
 @RestController
+@NoArgsConstructor
 public class AccountController {
 
+    private AccountRepository accountRepository;
+    private CustomerRepository customerRepository;
     @Autowired
-    AccountRepository accountRepository;
-    @Autowired
-    CustomerRepository customerRepository;
-
+    public AccountController(AccountRepository accountRepository, CustomerRepository customerRepository){
+        this.accountRepository = accountRepository;
+        this.customerRepository = customerRepository;
+    }
 
     @GetMapping(value = "/account/{id}")
     public ResponseEntity<Account> getAccount(@PathVariable Long id){
@@ -70,7 +74,7 @@ public class AccountController {
     @GetMapping(value = "/accounts/{type}")
     public ResponseEntity<List<Account>> getAccountsByType(@RequestParam(value = "typeAccount", required = false) Account.TypeAccount typeAccount){
         if (typeAccount != null) {
-            return new ResponseEntity(accountRepository.findAllByTypeAccount(typeAccount), HttpStatus.OK);
+            return new ResponseEntity<>(accountRepository.findAllByTypeAccount(typeAccount), HttpStatus.OK);
         } return new ResponseEntity<>(accountRepository.findAll(),HttpStatus.OK);
     }
 

@@ -2,20 +2,21 @@ package com.javier.cc.bank.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.relational.core.mapping.Table;
 
 
-
-@Entity
 @Table(name = "accounts")
+@Entity
 public class Account{
 
+    @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
+    @Getter
     @Column(name = "number")
     private long number;
 
@@ -25,11 +26,13 @@ public class Account{
         @Autowired
         TypeAccount(){}
     }
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "type")
     @Enumerated(value = EnumType.STRING)
     private TypeAccount typeAccount;
 
+    @Getter
     @ManyToOne
     @JsonIgnoreProperties({"accounts"})
     @JoinColumn(name = "customer_id", nullable = false )
@@ -43,34 +46,20 @@ public class Account{
     }
 
     public Account(){}
+
     public Account(TypeAccount type){
-
+        this.typeAccount = type;
     }
 
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
+    public void setCustomer(com.javier.cc.bank.models.Customer customer) {
         this.customer = customer;
     }
-
     public void setNumber(long number) {
         this.number = number;
     }
-
     public void setType(TypeAccount type) {
         TypeAccount typeAccount = type;
     }
-
-    public Long getId() {
-        return id;
-    }
-
-    public long getNumber() {
-        return number;
-    }
-
     public TypeAccount getType(TypeAccount typeAccount) {
         return typeAccount;
     }

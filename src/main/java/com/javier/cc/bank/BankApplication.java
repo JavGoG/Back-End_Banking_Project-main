@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Profile;
 
 @Profile("!test") //Run every time EXCEPT Tests
 @SpringBootApplication()
-@ComponentScan
+@ComponentScan("com.javier.cc.bank.repositories") //No leía las clases de este paquete.
 public class BankApplication {
 
 	public static void main(String[] args) {
