@@ -31,7 +31,7 @@ public class Customer {
 
     @JsonIgnoreProperties({"customer"})
     @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
-    private List<com.javier.cc.bank.models.Account> accounts;
+    private List<Account> accounts;
 
     public Customer(String name, String address, char[] password, String email, String userName) {
         this.name = name;
@@ -62,7 +62,7 @@ public class Customer {
         this.address = address;
     }
 
-    public void setAccounts(List<com.javier.cc.bank.models.Account> accounts) {
+    public void setAccounts(List<Account> accounts) {
         this.accounts = accounts;
     }
 

@@ -36,9 +36,9 @@ public class Account{
     @ManyToOne
     @JsonIgnoreProperties({"accounts"})
     @JoinColumn(name = "customer_id", nullable = false )
-    private com.javier.cc.bank.models.Customer customer;
+    private Customer customer;
 
-    public Account(long number, TypeAccount type, com.javier.cc.bank.models.Customer customer) {
+    public Account(long number, TypeAccount type, Customer customer) {
         this.number = number;
         TypeAccount typeAccount = type;
 
@@ -51,7 +51,7 @@ public class Account{
         this.typeAccount = type;
     }
 
-    public void setCustomer(com.javier.cc.bank.models.Customer customer) {
+    public void setCustomer(Customer customer) {
         this.customer = customer;
     }
     public void setNumber(long number) {

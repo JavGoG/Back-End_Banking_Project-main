@@ -9,6 +9,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
@@ -18,14 +19,14 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@ComponentScan
+@ComponentScan(value = "com.javier.cc.bank.repositories , com.javier.cc.bank.models") //No leía las clases de este paquete.
+@Configuration
 class BankApplicationTests {
 
-	@Autowired
-	//@Nested
+	@Autowired(required = true)
 	AccountRepository accountRepository;
 
-	@Autowired
+	@Autowired(required = true)
 	CustomerRepository customerRepository;
 
 
@@ -43,6 +44,7 @@ class BankApplicationTests {
 		customerRepository.save(customer);
 		Account account = new Account(123456, SAVINGS,customer);
 		accountRepository.save(account);
+		assertEquals("Jane", customer.getName());
 
 	}
 	@Test

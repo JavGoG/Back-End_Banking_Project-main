@@ -1,8 +1,9 @@
-package com.javier.cc.configurations;
+package com.javier.cc.bank.configurations;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
 
 @Configuration
 public class SpringGlobalConfig implements WebMvcConfigurer {
@@ -19,4 +20,5 @@ public class SpringGlobalConfig implements WebMvcConfigurer {
                 .allowedHeaders(ALLOWED_HEADERS)
                 .allowedMethods(ALLOWED_METHODS);
     }
+
 }
