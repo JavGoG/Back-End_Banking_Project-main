@@ -24,6 +24,10 @@ public class AccountController {
         this.accountRepository = accountRepository;
         this.customerRepository = customerRepository;
     }
+    @GetMapping(value = "/accounts")
+    public ResponseEntity<Account> getAccounts(){
+        return new ResponseEntity<>((Account) accountRepository.findAll(), HttpStatus.OK);
+    }
 
     @GetMapping(value = "/account/{id}")
     public ResponseEntity<Account> getAccount(@PathVariable Long id){
@@ -71,7 +75,7 @@ public class AccountController {
 
         return new ResponseEntity<>(customerRepository.findAllById(Collections.singleton((id))), HttpStatus.OK);
     }
-    @GetMapping(value = "/accounts/{type}")
+    @GetMapping(value = "/accounts/{typeAccount}")
     public ResponseEntity<List<Account>> getAccountsByType(@RequestParam(value = "typeAccount", required = false) Account.TypeAccount typeAccount){
         if (typeAccount != null) {
             return new ResponseEntity<>(accountRepository.findAllByTypeAccount(typeAccount), HttpStatus.OK);
