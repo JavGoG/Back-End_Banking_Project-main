@@ -44,7 +44,7 @@ public class AccountController {
     public ResponseEntity<Account> putAccount(@RequestBody Account account, @PathVariable Long id, Account.TypeAccount typeAccount){
         Account accountToUpdate = accountRepository.findById(id).get();
         accountToUpdate.setNumber(account.getNumber());
-        accountToUpdate.setType(account.getType(typeAccount));
+        accountToUpdate.setType(account.getType(account));
         return new ResponseEntity<>(accountToUpdate, HttpStatus.OK);
     }
 
@@ -79,7 +79,7 @@ public class AccountController {
     public ResponseEntity<List<Account>> getAccountsByType(@RequestParam(value = "typeAccount", required = false) Account.TypeAccount typeAccount){
         if (typeAccount != null) {
             return new ResponseEntity<>(accountRepository.findAllByTypeAccount(typeAccount), HttpStatus.OK);
-        } return new ResponseEntity<>(accountRepository.findAll(),HttpStatus.OK);
+        } return new ResponseEntity(accountRepository.findAll(),HttpStatus.OK);
     }
 
    @GetMapping(value = "/account/numbers")

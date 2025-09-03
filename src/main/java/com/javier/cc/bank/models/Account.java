@@ -3,11 +3,13 @@ package com.javier.cc.bank.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.ToString;
 import org.springframework.beans.factory.annotation.Autowired;
 
 
 @Table(name = "accounts")
 @Entity
+@ToString
 public class Account{
 
     @Getter
@@ -19,6 +21,8 @@ public class Account{
     @Getter
     @Column(name = "number")
     private long number;
+
+
 
     @Embeddable
     public enum TypeAccount{
@@ -60,8 +64,8 @@ public class Account{
     public void setType(TypeAccount type) {
         TypeAccount typeAccount = type;
     }
-    public TypeAccount getType(TypeAccount typeAccount) {
-        return typeAccount;
+    public TypeAccount getType(Account account) {
+        return account.typeAccount;
     }
 
 

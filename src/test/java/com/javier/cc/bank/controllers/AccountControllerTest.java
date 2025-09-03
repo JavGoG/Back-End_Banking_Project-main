@@ -37,7 +37,7 @@ class AccountControllerTest {
     @Test
     void shouldPostAccount(){
         char [] password5 = {'p', 'a', 's', 's', 'w', 'o', 'r', 'd','a', 'b', 'c'};
-        Customer customer = new Customer("David Horse", " 3 Newington Road", password5, "davidhorse@gmail.com", "David");
+        Customer customer = new Customer(0005L, "David Horse", " 3 Newington Road", password5, "davidhorse@gmail.com", "David");
         Account account = new Account(1, Account.TypeAccount.SAVINGS, customer);
 
         ResponseEntity<Account> accountResponseEntity = testRestTemplate.exchange("/account", HttpMethod.POST,new HttpEntity<Account>(account),Account.class);

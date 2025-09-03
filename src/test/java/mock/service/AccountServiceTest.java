@@ -30,7 +30,6 @@ class AccountServiceTest {
     @InjectMocks
     private AccountService accountService; // La clase que estamos testeando
 
-
     @Test
     void TestFindAll(){
         //Given
@@ -47,6 +46,7 @@ class AccountServiceTest {
         assertEquals("Michael Knight", result.get(0).getCustomer().getName());
         verify(accountRepositoryImpl).findAll();
     }
+
     @Test
     void testFindById(){
         //Given
@@ -80,7 +80,7 @@ class AccountServiceTest {
     void testSave(){
         //Given
         char[] password3 = {'1', '2', '3', 'p', 'a', 's', 's', 'w', 'o', 'r', 'd'};
-        Customer customer3 = new Customer("John Smith", " 1 Boulevard", password3, "johnsmith@gmail.com", "John");
+        Customer customer3 = new Customer(0003L,"John Smith", " 1 Boulevard", password3, "johnsmith@gmail.com", "John");
         Account account = new Account(2236, Account.TypeAccount.MARKET, customer3);
         //When
         accountRepositoryImpl.save(account);

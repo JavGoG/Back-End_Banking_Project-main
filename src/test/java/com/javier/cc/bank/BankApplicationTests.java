@@ -40,7 +40,7 @@ class BankApplicationTests {
 	@Test
 	public void createCustomerAndAccountThenSave(){
 		char[] password = {'p','a','s','s','w','o','r','d'};
-		Customer customer = new Customer("Jane", "Edinburgh Street", password,"janemartin@gmail.com", "janeMartin");
+		Customer customer = new Customer(0006L, "Jane", "Edinburgh Street", password,"janemartin@gmail.com", "janeMartin");
 		customerRepository.save(customer);
 		Account account = new Account(123456, SAVINGS,customer);
 		accountRepository.save(account);

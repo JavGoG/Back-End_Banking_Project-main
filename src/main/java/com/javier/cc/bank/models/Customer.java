@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -33,7 +34,8 @@ public class Customer {
     @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
     private List<Account> accounts;
 
-    public Customer(String name, String address, char[] password, String email, String userName) {
+    public Customer(Long id, String name, String address, char[] password, String email, String userName) {
+        this.id = id;
         this.name = name;
         this.address = address;
         this.accounts = new ArrayList<>();

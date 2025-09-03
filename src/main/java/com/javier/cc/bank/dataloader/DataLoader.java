@@ -9,6 +9,8 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class DataLoader implements ApplicationRunner {
 
@@ -31,16 +33,19 @@ public class DataLoader implements ApplicationRunner {
         char [] password4 = {'p', 'a', 's', 's', 'w', 'o', 'r', 'd', '1', '2', '3'};
         char [] password5 = {'p', 'a', 's', 's', 'w', 'o', 'r', 'd','a', 'b', 'c'};
 
-        Customer customer1 = new Customer("Michael Knight", " 4 Liberton Park", password1, "michaelknight@gmail.com", "Michael");
+        Customer customer1 = new Customer(0001L, "Michael Knight", " 4 Liberton Park", password1, "michaelknight@gmail.com", "Michael");
         customerRepository.save(customer1);
-        Customer customer2 = new Customer("Willie Sanders", " 25 Rose Crescent", password2, "williesanders@gmail.com", "Willie");
+        Customer customer2 = new Customer(0002L, "Willie Sanders", " 25 Rose Crescent", password2, "williesanders@gmail.com", "Willie");
         customerRepository.save(customer2);
-        Customer customer3 = new Customer("John Smith", " 1 Boulevard", password3, "johnsmith@gmail.com", "John");
+        Customer customer3 = new Customer(0003L, "John Smith", " 1 Boulevard", password3, "johnsmith@gmail.com", "John");
         customerRepository.save(customer3);
-        Customer customer4 = new Customer("Richard Mouse", " 7 Lasswade", password4, "richarmouse@gmail.com", "Richard");
+        Customer customer4 = new Customer(0004L, "Richard Mouse", " 7 Lasswade", password4, "richarmouse@gmail.com", "Richard");
         customerRepository.save(customer4);
-        Customer customer5 = new Customer("David Horse", " 3 Newington Road", password5, "davidhorse@gmail.com", "David");
+        Customer customer5 = new Customer(0005L, "David Horse", " 3 Newington Road", password5, "davidhorse@gmail.com", "David");
         customerRepository.save(customer5);
+
+        List<Customer> customers = List.of(customer1,customer2,customer3,customer4,customer5);
+
 
         Account accountS1 = new Account(1234, Account.TypeAccount.SAVINGS, customer1);
         accountRepository.save(accountS1);
@@ -75,6 +80,7 @@ public class DataLoader implements ApplicationRunner {
         accountRepository.save(accountB4);
         Account accountB5 = new Account(3238, Account.TypeAccount.BROKERAGE, customer5);
         accountRepository.save(accountB5);
+
 
 
     }
